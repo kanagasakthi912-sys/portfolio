@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio — Sakthi</title>
+  <!-- Font Awesome for Social Media Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; background:#787890; color:#333; }
+    header { background:#4ec5dd; color:#100f0f; padding:40px 0; text-align:center; }
+    #headerPic {
+      width: 200px; height: 200px; border-radius: 50%; object-fit: cover;
+      border: 4px solid #eae1e1; box-shadow: 0 0 20px rgba(230, 227, 221, 0.8);
+      animation: glowPulse 3s infinite; margin-bottom: 15px;
+    }
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 15px rgba(158, 231, 138, 0.7); }
+      50% { box-shadow: 0 0 35px rgb(223, 104, 239); }
+      100% { box-shadow: 0 0 15px rgba(139, 240, 188, 0.7); }
+    }
+    nav { background:#444; padding:10px; text-align:center; }
+    nav button {
+      background:#7283e7; color:#1b1618; border:none; margin:0 8px; padding:8px 14px;
+      border-radius:6px; font-weight:bold; cursor:pointer; transition:0.3s;
+    }
+    nav button:hover, nav button.active { background:#ff6600; }
+    section {
+      padding:40px 20px; max-width:1000px; margin:30px auto;
+      background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+      border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,.1);
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+    .card { background:#fff; padding:20px; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,.06); }
+    label { font-weight:600; display:block; margin:12px 0 6px; }
+    input[type="text"], input[type="email"], textarea {
+      width:100%; padding:10px; border-radius:6px; border:1px solid #ccc; box-sizing:border-box;
+    }
+    textarea { resize:vertical; }
+    small { display:block; margin-top:6px; }
+    .btn { padding:8px 12px; border-radius:6px; border:0; background:#222; color:white; cursor:pointer; font-weight:600; }
+    footer { text-align:center; padding:18px 0; background:#222; color:#fff; margin-top:40px; }
+
+    /* Social Media Styles */
+    .social-links { margin-top: 15px; display:flex; justify-content:center; gap:15px; }
+    .social-links a {
+      font-size: 32px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 55px; height: 55px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+      animation: prideFlow 6s linear infinite;
+      background-size: 400% 400%;
+    }
+    .social-links a i { color: white; }
+    .social-links a:hover { transform: scale(1.2) rotate(8deg); }
+
+    /* Brand Colors */
+    .social-links a.instagram { background: radial-gradient(circle at 30% 30%, #f58529, #dd2a7b, #8134af, #515bd4); }
+    .social-links a.github { background-color: #333; background-image:none; }
+    .social-links a.facebook { background: #1877f2; }
+    .social-links a.youtube { background: #FF0000; }
+
+    /* Pride Animation */
+    @keyframes prideFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .social-links a {
+      background-image: linear-gradient(270deg,
+        #e40303, #ff8c00, #ffed00, #008026, #004dff, #750787
+      );
+      background-size: 400% 400%;
+    }
+    .social-links a.github { background-color: #333; background-image:none; }
+
+    /* About Section */
+    .about-grid { display: grid; gap: 20px; max-width: 1200px; margin: auto; }
+    .about-box { background: #ededef; padding: 20px; border-radius: 20px; }
+    .dark-mode .about-box { background: #333; color: #fff; }
+
+    /* Skills Section */
+    .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 1200px; margin: auto; }
+    .skill-box { background: #fefcfc; padding: 20px; border-radius: 19px; }
+    .dark-mode .skill-box { background: #f8f8f9; color: #e34a4a; }
+    .skill-container { width: 80%; margin: 20px auto; text-align: left; }
+    .skill { margin-bottom: 20px; }
+    .skill-name { font-size: 30px; margin-bottom: 8px; }
+    .skill-bar { width: 200%; background-color: #e7dede; border-radius: 500px; overflow: hidden; height: 20px; }
+    .skill-fill { height: 100%; width: 5; background: linear-gradient(100deg, #61eed2, #55d76d); border-radius: 16px; transition: width 2s ease-in-out; }
+
+    /* Projects Section */
+    .project-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    .project-card { background: #ebe8e8; padding: 20px; border-radius: 14px; width: 2500px; text-align: center; }
+    .dark-mode .project-card { background: #eceeec; color: #dfcdcd; }
+
+    /* Education Section */
+    .education-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; max-width: 1200px; margin: auto; }
+    .education-box { background: #ededef; padding: 15px; border-radius: 16px; }
+    .dark-mode .education-box { background: #333; color: #fff; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img id="headerPic" src="sa.jpg.jpg" alt="Sakthi's Profile Picture" />
+    <h1>HI ! I AM kanagaSakthi!</h1>
+    <p>Welcome to my portfolio! </p>
+    <p>----------my social Media-----------</p>
+    <!-- Social Media in Header -->
+    <div class="social-links">
+      <a href="https://www.instagram.com/_ordinary_person_1_2_3?igsh=c2FmN2ZtcnpmNGo0" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://github.com/kanagasakthi912-sys" target="_blank" class="github"><i class="fab fa-github"></i></a>
+      <a href="https://www.facebook.com/share/1a5GRvwXV7/" target="_blank" class="facebook"><i class="fab fa-facebook"></i></a>
+      <a href="https://youtube.com/@kanagasakthi-q9l?si=d8NKkrAtOli5-0xB" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <button onclick="showSection('about', this)">About</button>
+    <button onclick="showSection('education', this)">Education</button>
+    <button onclick="showSection('skills', this)">Skills</button>
+    <button onclick="showSection('projects', this)">Projects</button>
+    <button onclick="showSection('contact', this)">Contact</button>
+  </nav>
+
+  <!-- About -->
+  <section id="about">
+    <div class="card about-grid">
+      <div class="about-box">
+        <h2>About Me</h2>
+        <p>Hi! I'm kanagaSakthi! I build user-friendly, responsive portfolio web pages.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" style="display:none;">
+    <div class="card education-grid">
+      <div class="education-box">
+        <h2>Education</h2>
+        <ul>
+          <li><b>SSLC (10th)</b> — State Board, Tamil Nadu (2021-2022)</li>
+          <li><b>Higher Secondary (12th)</b> — State Board, Tamil Nadu (2023-2024)</li>
+        </ul>
+      </div> 
+      <div class="education-box">
+       <li><b>B.Sc. Computer Science</b> — Bharathiar University (2024–2027)</li>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" style="display:none;">
+    <div class="card skills-grid">
+      <div class="skill-box">
+        <h2>Skills</h2>
+        <div class="skill-container">
+          <div class="skill"><div class="skill-name">HTML</div><div class="skill-bar"><div class="skill-fill" data-percent="90%"></div></div></div>
+          <div class="skill"><div class="skill-name">CSS</div><div class="skill-bar"><div class="skill-fill" data-percent="85%"></div></div></div>
+          <div class="skill"><div class="skill-name">JavaScript</div><div class="skill-bar"><div class="skill-fill" data-percent="70%"></div></div></div>
+          <div class="skill"><div class="skill-name">C</div><div class="skill-bar"><div class="skill-fill" data-percent="75%"></div></div></div>
+          <div class="skill"><div class="skill-name">C++</div><div class="skill-bar"><div class="skill-fill" data-percent="70%"></div></div></div>
+          <div class="skill"><div class="skill-name">MS Office</div><div class="skill-bar"><div class="skill-fill" data-percent="80%"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" style="display:none;">
+    <div class="card project-grid">
+      <div class="project-card">Portfolio Web page</div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" style="display:none;">
+    <div class="card">
+      <h2>Contact Me</h2>
+      <form id="contactForm" class="form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email (Gmail only):</label>
+        <input type="email" id="email" name="email" required />
+        <small id="emailError" style="color:red; display:none;"></small>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <div style="margin-top:14px; display:flex; gap:10px; align-items:center;">
+          <button type="submit" class="btn">Send Message</button>
+          <div id="successMsg" style="display:none;">✅ Your message was sent successfully</div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+     <nav><small>"Thank you for visiting my portfolio <!DOCTYPE html>
+     <html lang="en">
+     <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+     </head>
+     <body>
+      
+     </body>
+      my portfolio appreciate your time and consideration."</small></nav>
+    <gmail>|kanagasakthi912@gmail.com|</gmail>
+      <small>&copy; 2025 Sakthi</small>
+  </footer>
+
+  <script>
+    function showSection(id, btn) {
+      document.querySelectorAll("section").forEach(s => s.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+
+      document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      if (id === "skills") {
+        document.querySelectorAll(".skill-fill").forEach(fill => {
+          fill.style.width = fill.getAttribute("data-percent");
+        });
+      } else {
+        document.querySelectorAll(".skill-fill").forEach(fill => fill.style.width = "0");
+      }
+    }
+
+    const headerPic = document.getElementById('headerPic');
+    const emailField = document.getElementById('email');
+    const emailError = document.getElementById('emailError');
+    const successMsg = document.getElementById('successMsg');
+    const form = document.getElementById('contactForm');
+
+    const placeholderSVG = 'data:image/svg+xml;utf8,' +
+      encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect width="100%" height="100%" fill="#ddd"/><text x="50%" y="50%" dy=".35em" font-size="28" text-anchor="middle" fill="#666">No Image</text></svg>');
+
+    headerPic.addEventListener('error', function() {
+      if (!headerPic.dataset.fallback) {
+        headerPic.dataset.fallback = '1';
+        headerPic.src = placeholderSVG;
+      }
+    });
+
+    emailField.addEventListener('input', function () {
+      const email = emailField.value.trim();
+      emailError.style.display = 'none';
+      successMsg.style.display = 'none';
+      if (email && !email.includes('@')) {
+        emailError.textContent = '❌ You didn’t enter the @ symbol.';
+        emailError.style.display = 'block';
+      } else if (email.toLowerCase().includes('gamil.com')) {
+        emailError.textContent = '❌ Did you mean "gmail.com"?';
+        emailError.style.display = 'block';
+      }
+    });
+
+    form.addEventListener('submit', function (event) {
+      const email = emailField.value.trim();
+      if (!email.includes('@')) {
+        emailError.textContent = '❌ You didn’t enter the @ symbol.';
+        emailError.style.display = 'block';
+        event.preventDefault();
+      } else if (email.toLowerCase().includes('gamil.com')) {
+        emailError.textContent = '❌ Did you mean "gmail.com"?';
+        emailError.style.display = 'block';
+        event.preventDefault();
+      } else if (!email.toLowerCase().endsWith('@gmail.com')) {
+        emailError.textContent = '❌ Only Gmail addresses are allowed.';
+        emailError.style.display = 'block';
+        event.preventDefault();
+      } else {
+        emailError.style.display = 'none';
+        successMsg.style.display = 'inline-block';
+        event.preventDefault(); 
+        setTimeout(() => { successMsg.style.display = 'none'; }, 5000);
+      }
+    });
+  </script>
+
+</body>
+</html>
